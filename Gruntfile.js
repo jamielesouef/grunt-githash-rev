@@ -30,21 +30,11 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     githash_rev: {
-      default_options: {
-        options: {
-        },
-        files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
-      },
-      custom_options: {
-        options: {
-          separator: ': ',
-          punctuation: ' !!!',
-        },
-        files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
+      test :  {
+        files : {
+          src : ['test/mock/**/*.js','', 'test/mock/**/*.css', 'test/mock/index.html'],
+          dest: 'test/mockBuild/'
+        }
       },
     },
 
