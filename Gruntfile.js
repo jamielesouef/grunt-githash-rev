@@ -31,10 +31,14 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
     githash_rev: {
       test :  {
-        files : {
-          src : ['test/mock/**/*.js','', 'test/mock/**/*.css', 'test/mock/index.html'],
-          dest: 'test/mockBuild/'
-        }
+        options: {
+          indexFile: 'test/mock/index.html'
+        },  
+        files : [{
+          src : [
+          'test/mock/**/*.js', 
+          'test/mock/**/*.css']
+        }]
       },
     },
 
