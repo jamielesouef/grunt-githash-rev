@@ -56,8 +56,6 @@ module.exports = function(grunt) {
         //modify index content
         
         indexContent = indexContent.replace(file.basename, file.savefilename());
-        console.log(file.basename, file.savefilename());
-        grunt.file.write(options.indexFile, indexContent);
         
     }
 
@@ -87,7 +85,7 @@ module.exports = function(grunt) {
             if (error === null) {
                 inject = options.seperator + stdout.substring(0, options.hashLength);
                 addToContent();
-               
+                grunt.file.write(options.indexFile, indexContent);
             } else {
                 grunt.fail.warn('No hash found.. have you commited?');
             }
