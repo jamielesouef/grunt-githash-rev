@@ -31,9 +31,6 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
     githash_rev: {
       test :  {
-        options: {
-          indexFile: 'test/mock/index.html'
-        },  
         files : [{
           src : [
           'test/mock/**/*.js', 

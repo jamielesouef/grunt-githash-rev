@@ -17,7 +17,7 @@ module.exports = function(grunt) {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
         seperator: '-',
-        hashLength: 7,
+        hashLength: 10,
         indexFile: false
     });
 
@@ -54,14 +54,17 @@ module.exports = function(grunt) {
 
         //modify index content
         
-        indexContent = indexContent.replace(file.basename, file.savefilename());
-        
+        if (options.indexFile) {
+            indexContent = indexContent.replace(file.basename, file.savefilename());
+        }
     };
 
      // find index file and linked JS and CSS assets
     var addToContent = function(){
 
-        indexContent = grunt.file.read(options.indexFile);
+        if (options.indexFile) {
+            indexContent = grunt.file.read(options.indexFile);
+        }
 
         this.files.forEach(function(file) {
 
@@ -84,7 +87,9 @@ module.exports = function(grunt) {
             if (error === null) {
                 inject = options.seperator + stdout.substring(0, options.hashLength);
                 addToContent();
-                grunt.file.write(options.indexFile, indexContent);
+                if (options.indexFile) {
+                    grunt.file.write(options.indexFile, indexContent);
+                }
             } else {
                 grunt.fail.warn('No hash found.. have you commited?');
             }
