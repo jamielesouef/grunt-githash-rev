@@ -7,6 +7,7 @@
  */
 
 'use strict';
+
 var exec = require('child_process').exec;
 var path = require('path');
 
@@ -14,14 +15,12 @@ module.exports = function(grunt) {
 
   grunt.registerMultiTask('githash_rev', 'Appends current commit hash to assets', function() {
     // Merge task-specific and/or target-specific options with these defaults.
-    var options = this.options(
-    {
+    var options = this.options({
         seperator: '-',
         hashLength: 7,
         indexFile: false
     });
 
-    var regEx =  /(\.js|\.css)/gi;
 
     var inject,
         indexContent,
@@ -57,7 +56,7 @@ module.exports = function(grunt) {
         
         indexContent = indexContent.replace(file.basename, file.savefilename());
         
-    }
+    };
 
      // find index file and linked JS and CSS assets
     var addToContent = function(){
@@ -71,12 +70,12 @@ module.exports = function(grunt) {
                     return true;
                 } else {
                     return false;
-                    grunt.fail.warn('Source ' + filePath + ' not found.');
+                    this.grunt.fail.warn('Source ' + filePath + ' not found.');
                 }
             }).map(function(filePath) {
                 addGitHashTo(filePath);
-            })
-        })
+            });
+        });
     }.bind(this);
 
     //get the git hash
