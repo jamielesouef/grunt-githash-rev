@@ -72,8 +72,8 @@ module.exports = function(grunt) {
                 if(grunt.file.exists(filePath)){
                     return true;
                 } else {
-                    return false;
                     this.grunt.fail.warn('Source ' + filePath + ' not found.');
+                    return false;
                 }
             }).map(function(filePath) {
                 addGitHashTo(filePath);
