@@ -13,7 +13,7 @@ var path = require('path');
 
 module.exports = function(grunt) {
 
-  grunt.registerMultiTask('githash_rev', 'Appends current commit hash to assets', function() {
+  grunt.registerMultiTask('githashrev', 'Appends current commit hash to assets', function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
         seperator: '-',
